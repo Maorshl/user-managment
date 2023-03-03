@@ -1,4 +1,4 @@
-import {FlatList, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../store/store';
 import {getHomeUsers} from './state/homeActions';
@@ -17,10 +17,16 @@ const HomeScreen = () => {
       <FlatList
         keyExtractor={(_, index) => index.toString()}
         data={users}
-        renderItem={UserRow}
+        renderItem={props => <UserRow {...props} />}
+        contentContainerStyle={styles.contentContainer}
       />
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingHorizontal: 12,
+  },
+});
 export default HomeScreen;
