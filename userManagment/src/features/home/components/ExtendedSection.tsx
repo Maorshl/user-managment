@@ -1,7 +1,7 @@
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import {Name, User} from '../../../models/apiModels';
-import {colors} from '../../../contants/colors';
+import {colors} from '../../../constants/colors';
 import {useAppDispatch} from '../../../store/store';
 import {setEditedUser} from '../state/homeSlice';
 interface ExtendedSectionProps {
