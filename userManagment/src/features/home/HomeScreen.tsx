@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../store/store';
 import {getHomeUsers} from './state/homeActions';
 import UserRow from './components/UserRow';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -13,14 +14,16 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <View>
-      <FlatList
-        keyExtractor={(_, index) => index.toString()}
-        data={users}
-        renderItem={props => <UserRow {...props} />}
-        contentContainerStyle={styles.contentContainer}
-      />
-    </View>
+    <SafeAreaView edges={['top', 'right', 'left']}>
+      <View>
+        <FlatList
+          keyExtractor={(_, index) => index.toString()}
+          data={users}
+          renderItem={props => <UserRow {...props} />}
+          contentContainerStyle={styles.contentContainer}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
