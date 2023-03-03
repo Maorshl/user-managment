@@ -26,7 +26,13 @@ const UserRow = ({item, index}: UserRowProps) => {
           </Pressable>
         </View>
       </View>
-      {dropDownOpen ? <ExtendedSection user={item} index={index} /> : null}
+      {dropDownOpen ? (
+        <ExtendedSection
+          setDropDownOpen={setDropDownOpen}
+          user={item}
+          index={index}
+        />
+      ) : null}
     </View>
   );
 };

@@ -16,10 +16,16 @@ export const homeSlice = createSlice({
     setUsers: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
     },
+    setEditedUser: (
+      state,
+      action: PayloadAction<{user: User; index: number}>,
+    ) => {
+      state.users[action.payload.index] = action.payload.user;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {setUsers} = homeSlice.actions;
+export const {setUsers, setEditedUser} = homeSlice.actions;
 
 export default homeSlice.reducer;
