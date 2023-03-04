@@ -1,7 +1,10 @@
-import {Image, ImageSourcePropType, StyleSheet, Text, View} from 'react-native';
+import {Image, ImageSourcePropType, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors} from '../../../constants/colors';
 import {useAppSelector} from '../../../store/store';
+import RegularText from '../../../components/text/RegularText';
+import MediumText from '../../../components/text/MediumText';
+import SemiBoldText from '../../../components/text/SemiBoldText';
 
 const DetailsSection = () => {
   const currentUser = useAppSelector(state => state?.profile?.currentUser);
@@ -16,17 +19,17 @@ const DetailsSection = () => {
     icon?: ImageSourcePropType;
   }) => (
     <View style={styles.section}>
-      <Text>{name}</Text>
+      <SemiBoldText>{name}</SemiBoldText>
       <View style={styles.value}>
         {icon ? <Image source={icon} style={styles.icon} /> : null}
-        <Text>{value}</Text>
+        <RegularText>{value}</RegularText>
       </View>
     </View>
   );
 
   const renderGenderSection = () => (
     <View style={styles.section}>
-      <Text>Gender</Text>
+      <SemiBoldText>Gender</SemiBoldText>
       <View style={styles.genderBoxesContainer}>
         {renderGenderBox(EGender.male)}
         {renderGenderBox(EGender.female)}
@@ -70,14 +73,14 @@ const DetailsSection = () => {
           },
         ])}>
         <Image style={styles.icon} source={data.icon} />
-        <Text style={styles.whiteText}>{data.text}</Text>
+        <MediumText style={styles.whiteText}>{data.text}</MediumText>
       </View>
     );
   };
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.title}>My Profile</Text>
+      <SemiBoldText style={styles.title}>My Profile</SemiBoldText>
 
       <Image source={{uri: currentUser?.picture.large}} style={styles.image} />
       {renderTextSection({
