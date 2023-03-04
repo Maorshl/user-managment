@@ -38,7 +38,7 @@ const UserRow = ({item, index}: UserRowProps) => {
   );
 };
 
-export default UserRow;
+export default React.memo(UserRow);
 
 const styles = StyleSheet.create({
   flex1: {

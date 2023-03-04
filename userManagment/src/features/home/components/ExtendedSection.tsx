@@ -82,7 +82,7 @@ const ExtendedSection = ({
   );
 };
 
-export default ExtendedSection;
+export default React.memo(ExtendedSection);
 
 const styles = StyleSheet.create({
   container: {

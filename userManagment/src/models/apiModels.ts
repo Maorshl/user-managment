@@ -74,3 +74,10 @@ export interface User {
   picture: Picture;
   nat: string;
 }
+
+export enum EResultsNumber {
+  TEN = 10,
+  TWENTY = 20,
+  FIFTY = 50,
+  HUNDRED = 100,
+}
