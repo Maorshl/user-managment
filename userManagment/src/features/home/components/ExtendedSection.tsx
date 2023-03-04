@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Pressable, StyleSheet, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import {Name, User} from '../../../models/apiModels';
 import {colors} from '../../../constants/colors';
