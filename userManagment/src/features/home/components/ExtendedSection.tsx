@@ -4,6 +4,7 @@ import {Name, User} from '../../../models/apiModels';
 import {colors} from '../../../constants/colors';
 import {useAppDispatch} from '../../../store/store';
 import {setEditedUser} from '../state/homeSlice';
+import RegularText from '../../../components/text/RegularText';
 interface ExtendedSectionProps {
   user: User;
   index: number;
@@ -53,7 +54,7 @@ const ExtendedSection = ({
             ? {...styles.saveButton, opacity: 0.4}
             : styles.saveButton;
         }}>
-        <Text style={styles.saveText}>Save</Text>
+        <RegularText style={styles.saveText}>Save</RegularText>
       </Pressable>
     </View>
   );

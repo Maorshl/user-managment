@@ -1,7 +1,8 @@
-import {Pressable, LayoutAnimation, StyleSheet, Text, View} from 'react-native';
+import {Pressable, LayoutAnimation, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {User} from '../../../models/apiModels';
 import ExtendedSection from './ExtendedSection';
+import SemiBoldText from '../../../components/text/SemiBoldText';
 
 interface UserRowProps {
   item: User;
@@ -16,13 +17,13 @@ const UserRow = ({item, index}: UserRowProps) => {
       style={styles.mainContainer}
       onLayout={() => LayoutAnimation.spring()}>
       <View style={styles.rowContainer}>
-        <Text style={styles.flex1}>{index + 1}</Text>
-        <Text style={styles.flex1}>
+        <SemiBoldText style={styles.flex1}>{index + 1}</SemiBoldText>
+        <SemiBoldText style={styles.flex1}>
           {item.name.first + ' ' + item.name.last}
-        </Text>
+        </SemiBoldText>
         <View style={styles.flex1}>
           <Pressable onPress={handleOnPress} hitSlop={10}>
-            <Text>Open</Text>
+            <SemiBoldText>Open</SemiBoldText>
           </Pressable>
         </View>
       </View>

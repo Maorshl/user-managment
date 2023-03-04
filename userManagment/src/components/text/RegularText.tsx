@@ -1,10 +1,16 @@
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, TextStyle} from 'react-native';
 import React, {PropsWithChildren} from 'react';
 
-interface RegularTextProps extends PropsWithChildren {}
+interface RegularTextProps extends PropsWithChildren {
+  style?: TextStyle;
+}
 
-const RegularText = ({children}: RegularTextProps) => {
-  return <Text style={styles.regularText}>{children}</Text>;
+const RegularText = ({children, style}: RegularTextProps) => {
+  return (
+    <Text style={StyleSheet.flatten([styles.regularText, style])}>
+      {children}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({
