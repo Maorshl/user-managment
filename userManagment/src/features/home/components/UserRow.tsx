@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {User} from '../../../models/apiModels';
 import ExtendedSection from './ExtendedSection';
 import SemiBoldText from '../../../components/text/SemiBoldText';
+import {colors} from '../../../constants/colors';
 
 interface UserRowProps {
   item: User;
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   rowContainer: {
     flexDirection: 'row',
