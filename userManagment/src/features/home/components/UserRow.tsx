@@ -62,5 +62,6 @@ const styles = StyleSheet.create({
   },
   rowContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
 });
