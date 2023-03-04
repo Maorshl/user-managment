@@ -1,18 +1,25 @@
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, Image} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {colors} from '../../constants/colors';
 import DetailsSection from './components/DetailsSection';
 
 const ProfileScreen = () => {
-  const renderUpperSection = () => <View style={styles.upperSection} />;
+  const renderUpperSection = () => (
+    <View style={styles.upperSection}>
+      <Image
+        style={{width: 237, height: 239}}
+        source={require('../../assets/images/illu.png')}
+      />
+    </View>
+  );
   return (
-    <View style={styles.flex1}>
+    <SafeAreaView style={styles.flex1} edges={['left', 'right']}>
       <ScrollView>
         {renderUpperSection()}
         <DetailsSection />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -23,7 +30,9 @@ const styles = StyleSheet.create({
   upperSection: {
     backgroundColor: colors.cream,
     width: '100%',
-    height: 300,
+    height: 375,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
