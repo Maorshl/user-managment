@@ -4,6 +4,7 @@
 
 * React-native
 * Typescript
+# Redux-toolkit
 
 ## Screens
 
