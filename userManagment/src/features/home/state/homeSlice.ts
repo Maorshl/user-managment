@@ -33,7 +33,7 @@ export const homeSlice = createSlice({
       state.isLoading = action.payload;
     },
     deleteUser: (state, action: PayloadAction<number>) => {
-      state.users.splice(action.payload);
+      state.users.splice(action.payload, 1);
     },
   },
 });

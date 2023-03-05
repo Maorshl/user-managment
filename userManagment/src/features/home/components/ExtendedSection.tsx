@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Name, User} from '../../../models/apiModels';
 import {colors} from '../../../constants/colors';
 import {useAppDispatch} from '../../../store/store';
-import {setEditedUser} from '../state/homeSlice';
+import {deleteUser, setEditedUser} from '../state/homeSlice';
 import RegularText from '../../../components/text/RegularText';
 import MediumText from '../../../components/text/MediumText';
 import {genderDictionary} from '../../../constants/gender';
@@ -34,6 +34,10 @@ const ExtendedSection = ({
     dispatch(setEditedUser({user: editableUser, index}));
     setDropDownOpen(false);
   };
+  const handleDeleteUser = () => {
+    dispatch(deleteUser(index));
+    setDropDownOpen(false);
+  };
 
   const renderBottom = () => (
     <View style={styles.bottom}>
@@ -49,15 +53,26 @@ const ExtendedSection = ({
           value={editableUser.email}
         />
       </View>
-      <Pressable
-        onPress={handleSaveEditedUser}
-        style={isPressed => {
-          return isPressed.pressed
-            ? {...styles.saveButton, opacity: 0.4}
-            : styles.saveButton;
-        }}>
-        <RegularText style={styles.saveText}>Save</RegularText>
-      </Pressable>
+      <View style={styles.buttonsContainer}>
+        <Pressable
+          onPress={handleSaveEditedUser}
+          style={isPressed => {
+            return isPressed.pressed
+              ? {...styles.button, opacity: 0.4}
+              : styles.button;
+          }}>
+          <RegularText style={styles.saveText}>Save</RegularText>
+        </Pressable>
+        <Pressable
+          onPress={handleDeleteUser}
+          style={isPressed => {
+            return isPressed.pressed
+              ? {...styles.button, opacity: 0.4}
+              : {...styles.button, backgroundColor: colors.red};
+          }}>
+          <RegularText style={styles.saveText}>Delete</RegularText>
+        </Pressable>
+      </View>
     </View>
   );
 
@@ -73,12 +88,18 @@ const ExtendedSection = ({
         onChangeText={text => handleUserNameFieldChange({last: text})}
         value={editableUser.name.last}
       />
-      <View style={styles.gender}>
+      <View
+        style={StyleSheet.flatten([
+          styles.gender,
+          {backgroundColor: genderDictionary[user.gender].backgroundColor},
+        ])}>
         <Image
           style={styles.genderIcon}
           source={genderDictionary[user.gender].icon}
         />
-        <MediumText>{genderDictionary[user.gender].text}</MediumText>
+        <MediumText style={styles.whiteText}>
+          {genderDictionary[user.gender].text}
+        </MediumText>
       </View>
     </View>
   );
@@ -104,7 +125,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: StyleSheet.hairlineWidth,
     alignSelf: 'flex-start',
-    width: '75%',
+    width: '85%',
     borderRadius: 4,
     marginVertical: 4,
     marginHorizontal: 4,
@@ -115,15 +136,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   width: {
-    width: '77%',
+    width: '60%',
   },
-  saveButton: {
+  button: {
     backgroundColor: colors.blue,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,
     paddingHorizontal: 12,
     paddingVertical: 6,
+    marginHorizontal: 4,
   },
   saveText: {
     color: colors.white,
@@ -138,5 +160,9 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 10,
     flexDirection: 'row',
+  },
+  buttonsContainer: {flexDirection: 'row'},
+  whiteText: {
+    color: colors.white,
   },
 });
