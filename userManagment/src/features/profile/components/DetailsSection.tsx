@@ -1,4 +1,10 @@
-import {Image, ImageSourcePropType, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  ImageSourcePropType,
+  Platform,
+  StyleSheet,
+  View,
+} from 'react-native';
 import React from 'react';
 import {colors} from '../../../constants/colors';
 import {useAppSelector} from '../../../store/store';
@@ -7,6 +13,7 @@ import MediumText from '../../../components/text/MediumText';
 import SemiBoldText from '../../../components/text/SemiBoldText';
 import {genderDictionary} from '../../../constants/gender';
 import {EGender} from '../../../models/enums';
+import ProfileMap from './ProfileMap';
 
 const DetailsSection = () => {
   const currentUser = useAppSelector(state => state?.profile?.currentUser);
@@ -80,6 +87,7 @@ const DetailsSection = () => {
         icon: require('../../../assets/images/ad_units.png'),
       })}
       {renderGenderSection()}
+      {Platform.OS === 'ios' ? <ProfileMap /> : null}
     </View>
   );
 };
