@@ -42,16 +42,22 @@ const ExtendedSection = ({
   const renderBottom = () => (
     <View style={styles.bottom}>
       <View style={styles.width}>
-        <TextInput
-          style={styles.textField}
-          onChangeText={text => handleUserFieldChange({phone: text})}
-          value={editableUser.phone}
-        />
-        <TextInput
-          style={styles.textField}
-          onChangeText={text => handleUserFieldChange({email: text})}
-          value={editableUser.email}
-        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image source={require('../../../assets/images/ad_units.png')} />
+          <TextInput
+            style={styles.textField}
+            onChangeText={text => handleUserFieldChange({phone: text})}
+            value={editableUser.phone}
+          />
+        </View>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image source={require('../../../assets/images/mail.png')} />
+          <TextInput
+            style={styles.textField}
+            onChangeText={text => handleUserFieldChange({email: text})}
+            value={editableUser.email}
+          />
+        </View>
       </View>
       <View style={styles.buttonsContainer}>
         <Pressable
