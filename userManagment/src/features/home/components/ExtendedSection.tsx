@@ -1,10 +1,12 @@
-import {Pressable, StyleSheet, TextInput, View} from 'react-native';
+import {Image, Pressable, StyleSheet, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import {Name, User} from '../../../models/apiModels';
 import {colors} from '../../../constants/colors';
 import {useAppDispatch} from '../../../store/store';
 import {setEditedUser} from '../state/homeSlice';
 import RegularText from '../../../components/text/RegularText';
+import MediumText from '../../../components/text/MediumText';
+import {genderDictionary} from '../../../constants/gender';
 interface ExtendedSectionProps {
   user: User;
   index: number;
@@ -71,6 +73,13 @@ const ExtendedSection = ({
         onChangeText={text => handleUserNameFieldChange({last: text})}
         value={editableUser.name.last}
       />
+      <View style={styles.gender}>
+        <Image
+          style={styles.genderIcon}
+          source={genderDictionary[user.gender].icon}
+        />
+        <MediumText>{genderDictionary[user.gender].text}</MediumText>
+      </View>
     </View>
   );
 
@@ -118,5 +127,16 @@ const styles = StyleSheet.create({
   },
   saveText: {
     color: colors.white,
+  },
+  genderIcon: {
+    marginEnd: 4,
+  },
+  gender: {
+    flex: 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 10,
+    flexDirection: 'row',
   },
 });

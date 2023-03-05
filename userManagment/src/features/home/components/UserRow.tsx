@@ -24,7 +24,7 @@ const UserRow = ({item, index}: UserRowProps) => {
         </SemiBoldText>
         <View style={styles.flex1}>
           <Pressable onPress={handleOnPress} hitSlop={10}>
-            <SemiBoldText>Open</SemiBoldText>
+            <SemiBoldText>{dropDownOpen ? 'Close' : 'Open'}</SemiBoldText>
           </Pressable>
         </View>
       </View>

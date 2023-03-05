@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../store/store';
 import {getHomeUsers} from './state/homeActions';
@@ -9,6 +9,7 @@ import NumberOfRows from './components/NumberOfRows';
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(state => state.home.users);
+  const isLoading = useAppSelector(state => state.home.isLoading);
   const numberOfRows = useAppSelector(state => state.home.numberOfRows);
 
   useEffect(() => {
@@ -19,14 +20,18 @@ const HomeScreen = () => {
     <SafeAreaView edges={['top', 'right', 'left']}>
       <View>
         <NumberOfRows />
-        <FlatList
-          keyExtractor={(_, index) => index.toString()}
-          data={users}
-          ListFooterComponent={<View />}
-          ListFooterComponentStyle={styles.footer}
-          renderItem={props => <UserRow {...props} />}
-          contentContainerStyle={styles.contentContainer}
-        />
+        {isLoading ? (
+          <ActivityIndicator size="large" style={styles.loader} />
+        ) : (
+          <FlatList
+            keyExtractor={(_, index) => index.toString()}
+            data={users}
+            ListFooterComponent={<View />}
+            ListFooterComponentStyle={styles.footer}
+            renderItem={props => <UserRow {...props} />}
+            contentContainerStyle={styles.contentContainer}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
@@ -40,5 +45,6 @@ const styles = StyleSheet.create({
     height: 100,
     width: '100%',
   },
+  loader: {paddingVertical: '50%'},
 });
 export default HomeScreen;
