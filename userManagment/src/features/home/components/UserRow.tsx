@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {User} from '../../../models/apiModels';
 import ExtendedSection from './ExtendedSection';
 import SemiBoldText from '../../../components/text/SemiBoldText';
+import {colors} from '../../../constants/colors';
 
 interface UserRowProps {
   item: User;
@@ -23,7 +24,7 @@ const UserRow = ({item, index}: UserRowProps) => {
         </SemiBoldText>
         <View style={styles.flex1}>
           <Pressable onPress={handleOnPress} hitSlop={10}>
-            <SemiBoldText>Open</SemiBoldText>
+            <SemiBoldText>{dropDownOpen ? 'Close' : 'Open'}</SemiBoldText>
           </Pressable>
         </View>
       </View>
@@ -38,7 +39,7 @@ const UserRow = ({item, index}: UserRowProps) => {
   );
 };
 
-export default UserRow;
+export default React.memo(UserRow);
 
 const styles = StyleSheet.create({
   flex1: {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   rowContainer: {
     flexDirection: 'row',

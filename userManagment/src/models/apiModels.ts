@@ -1,3 +1,5 @@
+import {EGender} from './enums';
+
 export interface Name {
   title: string;
   first: string;
@@ -61,7 +63,7 @@ export interface Picture {
 }
 
 export interface User {
-  gender: string;
+  gender: EGender;
   name: Name;
   location: Location;
   email: string;
@@ -73,4 +75,11 @@ export interface User {
   id: Id;
   picture: Picture;
   nat: string;
+}
+
+export enum EResultsNumber {
+  TEN = 10,
+  TWENTY = 20,
+  FIFTY = 50,
+  HUNDRED = 100,
 }

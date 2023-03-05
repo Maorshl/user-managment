@@ -5,6 +5,8 @@ import {useAppSelector} from '../../../store/store';
 import RegularText from '../../../components/text/RegularText';
 import MediumText from '../../../components/text/MediumText';
 import SemiBoldText from '../../../components/text/SemiBoldText';
+import {genderDictionary} from '../../../constants/gender';
+import {EGender} from '../../../models/enums';
 
 const DetailsSection = () => {
   const currentUser = useAppSelector(state => state?.profile?.currentUser);
@@ -36,30 +38,6 @@ const DetailsSection = () => {
       </View>
     </View>
   );
-
-  enum EGender {
-    male = 'male',
-    female = 'female',
-  }
-
-  const genderDictionary: {
-    [key in EGender]: {
-      text: string;
-      backgroundColor: string;
-      icon: ImageSourcePropType;
-    };
-  } = {
-    [EGender.female]: {
-      backgroundColor: colors.pink,
-      text: 'Female',
-      icon: require('../../../assets/images/female.png'),
-    },
-    [EGender.male]: {
-      backgroundColor: colors.blue,
-      text: 'Male',
-      icon: require('../../../assets/images/male.png'),
-    },
-  };
 
   const renderGenderBox = (gender: EGender) => {
     const data = genderDictionary[gender];
