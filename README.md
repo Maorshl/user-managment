@@ -12,3 +12,4 @@
 
 ## Bonus
 The profile screen displays a map view only in IOS due to google maps API having to insert credit card to get a key, I implemnted a Map only with Apple Maps.
+I didn't manage to add user's location shown on the map due to time shortage, I developed 3 different apps using location sharing and if I had a little more time I would have done it.
