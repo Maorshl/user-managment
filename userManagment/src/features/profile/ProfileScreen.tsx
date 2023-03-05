@@ -8,7 +8,7 @@ const ProfileScreen = () => {
   const renderUpperSection = () => (
     <View style={styles.upperSection}>
       <Image
-        style={{width: 237, height: 239}}
+        style={styles.profileImage}
         source={require('../../assets/images/illu.png')}
       />
     </View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  profileImage: {width: 237, height: 239},
 });
 
 export default ProfileScreen;
