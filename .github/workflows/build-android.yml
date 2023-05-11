@@ -43,7 +43,7 @@ jobs:
 
       - name: Build Android
         run: |
-          cd android && ./gradlew bundle --no-daemon
+          cd userManagment && cd android && ./gradlew bundle --no-daemon
       # Upload to Artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
