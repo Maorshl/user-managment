@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: cd to directory
-        run: cd userManagment
-
       - name: Use Node.js 14
         uses: actions/setup-node@v3
         with:
@@ -38,7 +35,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-caches-
       - name: Make Gradlew Executable
-        run: cd android && chmod +x ./gradlew
+        run: cd userManagment && cd android && chmod +x ./gradlew
         # Build Command
 
       - name: Build Android
