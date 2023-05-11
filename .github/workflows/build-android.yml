@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: cd to directory
+        run: cd userManagment
+
       - name: Use Node.js 14
         uses: actions/setup-node@v3
         with:
@@ -18,7 +21,7 @@ jobs:
           cache: "npm"
 
       - name: Install Node modules
-        run: cd userManagment && npm ci
+        run: npm ci
 
       - name: Cache Gradle Wrapper
         uses: actions/cache@v2
