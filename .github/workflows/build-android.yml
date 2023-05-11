@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 14
           cache: "npm"
+          cache-dependency-path: userManagment/package-lock.json
 
       - name: Install Node modules
         run: npm ci
