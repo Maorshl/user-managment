@@ -22,7 +22,7 @@ jobs:
           cache-dependency-path: userManagment/package-lock.json
 
       - name: Install Node modules
-        run: npm ci
+        run: cd userManagment && npm ci
 
       - name: Cache Gradle Wrapper
         uses: actions/cache@v2
