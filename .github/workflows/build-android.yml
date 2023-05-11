@@ -14,6 +14,12 @@ jobs:
       - name: cd to directory
         run: cd userManagment
 
+      - name: Use Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: "npm"
+
       - name: Install Node modules
         run: npm ci
 
