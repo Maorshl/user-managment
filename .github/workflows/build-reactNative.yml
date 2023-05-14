@@ -9,7 +9,6 @@ jobs:
   install-and-test:
     runs-on: ubuntu-latest
 
- jobs: 
   build-android:
     needs: install-and-test
     uses: ./.github/workflows/android-build.yml
@@ -18,8 +17,8 @@ jobs:
     secrets: inherit
 
   build-ios:
-      needs: install-and-test
-      uses: ./.github/workflows/ios-build.yml
-      with:
-        environment: release
-      secrets: inherit
+    needs: install-and-test
+    uses: ./.github/workflows/ios-build.yml
+    with:
+      environment: release
+    secrets: inherit
