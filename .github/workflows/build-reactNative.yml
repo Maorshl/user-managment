@@ -1,24 +1,26 @@
-name: Pull Request into Master, Develop and Preprod
-
-on:
-  push:
-    branches:
-      - "CI-CD/test1"
-
 jobs:
+  #First job
   install-and-test:
     runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: "yarn"
+
+  # Second Job
   build-android:
     needs: install-and-test
-    uses: ./.github/workflows/android-build.yml
-    with:
-      environment: release
+    uses: ./.github/workflows/build-android.yml
     secrets: inherit
 
+  # Third Job
   build-ios:
     needs: install-and-test
-    uses: ./.github/workflows/ios-build.yml
-    with:
-      environment: release
+    uses: ./.github/workflows/build-ios.yml
     secrets: inherit
