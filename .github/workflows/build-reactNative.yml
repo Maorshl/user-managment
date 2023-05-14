@@ -1,3 +1,10 @@
+name: "Main Process"
+
+on:
+  push:
+    branches:
+      - "CI-CD/test1"
+
 jobs:
   #First job
   install-and-test:
