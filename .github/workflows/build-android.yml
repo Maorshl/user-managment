@@ -1,9 +1,20 @@
 name: "Android Build"
 
 on:
-  push:
-    branches:
-      - "CI-CD/test1"
+  workflow_call:
+    inputs:
+      environment:
+        required: false
+        type: string
+      publish:
+        required: false
+        type: boolean
+        description: Publish to Appcenter
+    secrets:
+      NPM_TOKEN:
+        required: false
+      APP_CENTER_TOKEN_ANDROID:
+        required: false
 
 jobs:
   build-android:
@@ -45,5 +56,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: FinderUK.aab
+          name: userManagement.aab
           path: "userManagment/android/app/build/outputs/bundle/release/app-release.aab"
