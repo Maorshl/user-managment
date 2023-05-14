@@ -6,11 +6,10 @@ on:
       - "CI-CD/test1"
 
 jobs:
-  #First job
   install-and-test:
     runs-on: ubuntu-latest
 
- steps: 
+ jobs: 
   build-android:
     needs: install-and-test
     uses: ./.github/workflows/android-build.yml
@@ -18,8 +17,7 @@ jobs:
       environment: release
     secrets: inherit
 
-  # Third Job
-    build-ios:
+  build-ios:
       needs: install-and-test
       uses: ./.github/workflows/ios-build.yml
       with:
