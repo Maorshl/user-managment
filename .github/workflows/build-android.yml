@@ -51,10 +51,10 @@ jobs:
 
       - name: Build Android
         run: |
-          cd userManagment && cd android && ./gradlew bundle --no-daemon
+          cd userManagment && cd android && ./gradlew assembleDebug --no-daemon
       # Upload to Artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: userManagement.aab
-          path: "userManagment/android/app/build/outputs/bundle/release/app-release.aab"
+          name: userManagement.apk
+          path: "userManagment/android/app/build/outputs/bundle/release/app-release.apk"
