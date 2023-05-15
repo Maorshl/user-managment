@@ -38,7 +38,7 @@ jobs:
           cache-dependency-path: userManagment/package-lock.json
 
       - name: Install Node modules
-        run: npm ci
+        run: cd userManagment && npm ci
 
       - name: Setup Ruby (bundle)
         uses: ruby/setup-ruby@v1
@@ -57,7 +57,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pods-
       - name: Install pod dependencies
-        run: cd ios && pod install && cd ..
+        run: cd userManagment && cd ios && pod install && cd ..
 
       - name: Build iOS (Release)
         uses: yukiarrr/ios-build-action@v1.5.0
