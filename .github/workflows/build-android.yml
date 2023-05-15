@@ -51,7 +51,7 @@ jobs:
 
       - name: Build Android
         run: |
-          cd userManagment && cd android && ./gradlew assembleDebug --no-daemon
+          cd userManagment && cd android && ./gradlew assembleRelease --no-daemon
       # Upload to Artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
